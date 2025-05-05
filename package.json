@@ -1,0 +1,70 @@
+{
+  "name": "zoom-meet",
+  "displayName": "Zoom Meet",
+  "description": "Start a Zoom meeting directly from VS Code",
+  "version": "0.1.8",
+  "publisher": "ZoomMeet",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alakcreature/ZoomMeet"
+  },
+  "icon": "meet.png",
+  "engines": {
+    "vscode": "^1.50.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": [
+    "onCommand:zoom.startMeet",
+    "onCommand:googlemeet.startMeet",
+    "onView:meetings.view"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "meetingsContainer",
+          "title": "Meetings",
+          "icon": "meet.png"
+        }
+      ]
+    },
+    "views": {
+      "meetingsContainer": [
+        {
+          "type": "webview",
+          "id": "meetings.view",
+          "name": "Video Meetings"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "zoom.startMeet",
+        "title": "Start Zoom Meeting"
+      },
+      {
+        "command": "googlemeet.startMeet",
+        "title": "Start Google Meet"
+      }
+    ],
+    "keybindings": [
+      {
+        "key": "ctrl+alt+z",
+        "command": "zoom.startMeet",
+        "mac": "ctrl+alt+z"
+      },
+      {
+        "key": "ctrl+alt+g",
+        "command": "googlemeet.startMeet",
+        "mac": "ctrl+alt+g"
+      }
+    ]
+  },
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "eslint": "^8.0.0"
+  }
+}
