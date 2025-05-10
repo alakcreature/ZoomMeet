@@ -6,12 +6,12 @@ This **Zoom / Google & Google Meet** extension for Visual Studio Code allows you
 - **Start Zoom / Google meetings directly from VS Code**: No need to open the Zoom / Google app or web browser.
 - **Quick access** to Zoom / Google meetings from the **Activity Bar**.
 - **Webview for direct interaction**: Start Zoom / Google meetings with a single click from the webview interface.
+- **(NEW) Save your personal meeting link**: Enter your Zoom / Google Meet link once, and it will be saved automatically within the extension itself (locally on your system).
 
 
 ### Demo
 
 ![Demo](demo.gif) [](demo.gif)
-
 
 ## Installation
 
@@ -26,24 +26,31 @@ This **Zoom / Google & Google Meet** extension for Visual Studio Code allows you
 
 Once installed, you will see a new icon in the **Activity Bar** with the label "Zoom / Google". You can access this to start a Zoom / Google meeting directly from the editor.
 
-- Click the **Start Zoom Meeting / Start Google Meet** icon in the Activity Bar.
-- Two buttons in the webview will allow you to **start a new Zoom / Google meeting**.
-- You can also use the **command palette** or the keyboard shortcut (`Control+Option+Z` / `Control+Option+G`) to trigger the **Zoom / Google meeting** creation.
+- Enter your **personal meeting link** in the input field.
+- Your link is saved **automatically** when you:
+  - Click the **Start Zoom / Google Meeting** button.
+  - Or click **outside** the input field.
+- The link is stored locally in your VS Code settings — **we do not collect or send any data** externally.
+- Launch meetings instantly with one click from the extension panel.
 
 ### Command
 
-The extension registers the following command:
+The extension registers the following commands:
+
+- `zoom.startMeet` / `googlemeet.startMeet`: Starts a new Zoom / Google meeting by opening the saved meeting link (or default Zoom / Google site if none saved).
 
 - `zoom.startMeet / googlemeet.startMeet`: Starts a new Zoom / Google meeting by opening the Zoom / Google website.
 
 ### Keybindings
 
-You can use the following keyboard shortcut:
+You can use the following keyboard shortcuts:
 
 - **Windows/Linux**: `Ctrl+Alt+Z` / `Ctrl+Alt+G`
-- **macOS**: `Control+Option+Z`
+- **macOS**: `Control+Option+Z` / `Control+Option+G`
 
-To modify or add additional keybindings, you can do so from the **Keyboard Shortcuts** (`Ctrl+K Ctrl+S`).
+To modify or add additional keybindings, go to **Keyboard Shortcuts** (`Ctrl+K Ctrl+S`).
+
+---
 
 ## Development
 
@@ -73,8 +80,4 @@ To contribute to this project or to modify it for your own needs, follow these s
 
 ## Acknowledgements
 
-Thanks to the **Visual Studio Code API** and the **Zoom / Google** for making this extension possible!
-
----
-
-Feel free to replace or add any additional information depending on your needs.
+Thanks to the **Visual Studio Code API** and **Zoom / Google Meet** for making this extension possible!

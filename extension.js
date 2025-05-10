@@ -52,76 +52,76 @@ class MeetingWebviewProvider {
 
   _getHtml(cssUri, scriptUri) {
     return `
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zoom Meet</title>
-    <link href="${cssUri}" rel="stylesheet" />
-</head>
-<body>
-    <div class="card">
-        <div class="card-header">
-            <h1 class="card-title">Zoom Meet</h1>
-            <p class="card-description">Quickly launch your meetings</p>
-        </div>
-        <div class="card-content">
-            <!-- Zoom Meeting Section -->
-            <div class="meeting-section zoom-section">
-                <h2 class="section-title">Zoom Meeting</h2>
-                <div class="input-group">
-                    <input type="text" class="link-input" id="zoom-link" placeholder="Enter your personal Zoom link">
-                    <button class="copy-button" id="copy-zoom" aria-label="Copy Zoom link">
-                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                        </svg>
-                    </button>
-                </div>
-                <button class="launch-button zoom-button" id="launch-zoom">
-                    Start Zoom Meeting
-                    <svg class="icon arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                </button>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Meeting Launcher Pro</title>
+        <link href="${cssUri}" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="card">
+            <div class="card-header">
+                <h1 class="card-title">Meeting Launcher Pro</h1>
+                <p class="card-description">Quickly launch your meetings</p>
             </div>
-            
-            <!-- Google Meet Section -->
-            <div class="meeting-section google-section">
-                <h2 class="section-title">Google Meet</h2>
-                <div class="input-group">
-                    <input type="text" class="link-input" id="google-link" placeholder="Enter your personal Google Meet link">
-                    <button class="copy-button" id="copy-google" aria-label="Copy Google Meet link">
-                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            <div class="card-content">
+                <!-- Zoom Meeting Section -->
+                <div class="meeting-section zoom-section">
+                    <h2 class="section-title">Zoom Meeting</h2>
+                    <div class="input-group">
+                        <input type="text" class="link-input" id="zoom-link" placeholder="Enter your personal Zoom link">
+                        <button class="copy-button" id="copy-zoom" aria-label="Copy Zoom link">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <a href="#" class="launch-link zoom-button" id="launch-zoom">
+                        Start Zoom Meeting
+                        <svg class="icon arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
                         </svg>
-                    </button>
+                    </a>
+                    <p class="helper-text">Your link will be saved automatically when entered</p>
                 </div>
-                <button class="launch-button google-button" id="launch-google">
-                    Start Google Meeting
-                    <svg class="icon arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                </button>
+                
+                <!-- Google Meet Section -->
+                <div class="meeting-section google-section">
+                    <h2 class="section-title">Google Meet</h2>
+                    <div class="input-group">
+                        <input type="text" class="link-input" id="google-link" placeholder="Enter your personal Google Meet link">
+                        <button class="copy-button" id="copy-google" aria-label="Copy Google Meet link">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <a href="#" class="launch-link google-button" id="launch-google">
+                        Start Google Meeting
+                        <svg class="icon arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                    <p class="helper-text">Your link will be saved automatically when entered</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                Launch your meetings with one click
             </div>
         </div>
-        <div class="card-footer">
-            Launch your meetings with one click
-        </div>
-    </div>
-
-    <div class="toast" id="toast">Copied to clipboard!</div>
-    <a id="zoom-anchor" href="#" target="_blank" style="display: none;"></a>
-    <a id="google-anchor" href="#" target="_blank" style="display: none;"></a>
-
-    <script src="${scriptUri}"></script>
-</body>
-</html>`;
-  }
+    
+        <div class="toast" id="toast">Copied to clipboard!</div>
+    
+        <script src="${scriptUri}"></script>
+    </body>
+    </html>`;
+}
 }
 
 module.exports = {
