@@ -38,58 +38,89 @@ class MeetingWebviewProvider {
       localResourceRoots: [this._extensionUri]
     };
 
-    webviewView.webview.html = this._getHtml();
+    const scriptUri = webviewView.webview.asWebviewUri(
+      vscode.Uri.joinPath(this._extensionUri, "media", "script.js")
+    );
+
+
+    const cssUri = webviewView.webview.asWebviewUri(
+      vscode.Uri.joinPath(this._extensionUri, "media", "styles.css")
+    );
+
+    webviewView.webview.html = this._getHtml(cssUri, scriptUri);
   }
 
-  _getHtml() {
+  _getHtml(cssUri, scriptUri) {
     return `
-      <!DOCTYPE html>
-      <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Meetings</title>
-        <style>
-          body {
-            font-family: sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            gap: 20px;
-          }
-          button {
-            padding: 12px 24px;
-            font-size: 16px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            color: white;
-          }
-          .zoom {
-            width: 240px;
-            background-color: #2d8cff;
-          }
-          .google {
-            width: 240px;
-            background-color: #34a853;
-          }
-          button:hover {
-            opacity: 0.9;
-          }
-        </style>
-      </head>
-      <body>
-        <a href="https://us04web.zoom.us/start/videomeeting" target="_blank">
-          <button class="zoom">Start Zoom Meeting</button>
-        </a>
-        <a href="https://meet.google.com/new" target="_blank">
-          <button class="google">Start Google Meet</button>
-        </a>
-      </body>
-      </html>
-    `;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoom Meet</title>
+    <link href="${cssUri}" rel="stylesheet" />
+</head>
+<body>
+    <div class="card">
+        <div class="card-header">
+            <h1 class="card-title">Zoom Meet</h1>
+            <p class="card-description">Quickly launch your meetings</p>
+        </div>
+        <div class="card-content">
+            <!-- Zoom Meeting Section -->
+            <div class="meeting-section zoom-section">
+                <h2 class="section-title">Zoom Meeting</h2>
+                <div class="input-group">
+                    <input type="text" class="link-input" id="zoom-link" placeholder="Enter your personal Zoom link">
+                    <button class="copy-button" id="copy-zoom" aria-label="Copy Zoom link">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                    </button>
+                </div>
+                <button class="launch-button zoom-button" id="launch-zoom">
+                    Start Zoom Meeting
+                    <svg class="icon arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Google Meet Section -->
+            <div class="meeting-section google-section">
+                <h2 class="section-title">Google Meet</h2>
+                <div class="input-group">
+                    <input type="text" class="link-input" id="google-link" placeholder="Enter your personal Google Meet link">
+                    <button class="copy-button" id="copy-google" aria-label="Copy Google Meet link">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                    </button>
+                </div>
+                <button class="launch-button google-button" id="launch-google">
+                    Start Google Meeting
+                    <svg class="icon arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="card-footer">
+            Launch your meetings with one click
+        </div>
+    </div>
+
+    <div class="toast" id="toast">Copied to clipboard!</div>
+    <a id="zoom-anchor" href="#" target="_blank" style="display: none;"></a>
+    <a id="google-anchor" href="#" target="_blank" style="display: none;"></a>
+
+    <script src="${scriptUri}"></script>
+</body>
+</html>`;
   }
 }
 
